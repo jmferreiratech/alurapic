@@ -9,26 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var PhotoComponent = (function () {
-    function PhotoComponent() {
+var FilterByTitle = (function () {
+    function FilterByTitle() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PhotoComponent.prototype, "title", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PhotoComponent.prototype, "url", void 0);
-    PhotoComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: "photo",
-            templateUrl: "./photo.component.html",
+    FilterByTitle.prototype.transform = function (photos, filterText) {
+        if (photos === void 0) { photos = []; }
+        if (filterText === void 0) { filterText = ""; }
+        return photos
+            .filter(function (p) { return p.titulo.toLowerCase().includes(filterText.toLowerCase()); });
+    };
+    FilterByTitle = __decorate([
+        core_1.Pipe({
+            name: "filterByTitle",
         }), 
         __metadata('design:paramtypes', [])
-    ], PhotoComponent);
-    return PhotoComponent;
+    ], FilterByTitle);
+    return FilterByTitle;
 }());
-exports.PhotoComponent = PhotoComponent;
-//# sourceMappingURL=photo.component.js.map
+exports.FilterByTitle = FilterByTitle;
+//# sourceMappingURL=photo.pipes.js.map
