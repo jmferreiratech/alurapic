@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var PanelComponent = (function () {
+    function PanelComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], PanelComponent.prototype, "title", void 0);
+    PanelComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: "app",
-            templateUrl: "./app.component.html",
+            selector: "panel",
+            templateUrl: "./panel.component.html",
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], PanelComponent);
+    return PanelComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.PanelComponent = PanelComponent;
+//# sourceMappingURL=panel.component.js.map
