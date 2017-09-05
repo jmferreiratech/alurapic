@@ -1,1 +1,28 @@
 <h1 class="text-center">Register a photo</h1>
+
+<div class="container">
+
+    <form class="row" (submit)="register($event)">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Title</label>
+                <input name="title" [(ngModel)]="photo.title" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input name="url" [(ngModel)]="photo.url" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" [(ngModel)]="photo.description" class="form-control" autocomplete="off">
+                </textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Save
+            </button>
+            <a [routerLink]="['']" class="btn btn-primary">Back</a>
+            <hr>
+        </div>
+    </form>
+</div>

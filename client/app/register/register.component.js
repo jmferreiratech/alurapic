@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var photo_component_1 = require("../photo/photo.component");
+var http_1 = require("@angular/http");
 var RegisterComponent = (function () {
-    function RegisterComponent() {
+    function RegisterComponent(http) {
+        this.photo = new photo_component_1.PhotoComponent();
+        this.http = http;
     }
+    RegisterComponent.prototype.register = function (event) {
+        var _this = this;
+        event.preventDefault();
+        console.log(this.photo);
+        var headers = new http_1.Headers();
+        headers.append("Content-Type", "application/json");
+        this.http
+            .post("v1/fotos", JSON.stringify({ titulo: this.photo.title, url: this.photo.url, descricao: this.photo.description }), { headers: headers })
+            .subscribe(function () {
+            console.log("Photo saved");
+            _this.photo = new photo_component_1.PhotoComponent();
+        }, function (error) { return console.log(error); });
+    };
     RegisterComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: "register",
             templateUrl: "./register.component.html",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], RegisterComponent);
     return RegisterComponent;
 }());

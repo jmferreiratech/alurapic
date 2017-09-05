@@ -6,6 +6,6 @@ import {Pipe, PipeTransform} from "@angular/core";
 export class FilterByTitle implements PipeTransform {
     transform(photos = [], filterText = "") {
         return photos
-            .filter(p => p.titulo.toLowerCase().includes(filterText.toLowerCase()));
+            .filter(p => p.titulo && p.titulo.toLowerCase().includes(filterText.toLowerCase()));
     }
 }

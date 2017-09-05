@@ -16,7 +16,7 @@ var FilterByTitle = (function () {
         if (photos === void 0) { photos = []; }
         if (filterText === void 0) { filterText = ""; }
         return photos
-            .filter(function (p) { return p.titulo.toLowerCase().includes(filterText.toLowerCase()); });
+            .filter(function (p) { return p.titulo && p.titulo.toLowerCase().includes(filterText.toLowerCase()); });
     };
     FilterByTitle = __decorate([
         core_1.Pipe({
