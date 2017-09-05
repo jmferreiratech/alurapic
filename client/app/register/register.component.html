@@ -2,23 +2,40 @@
 
 <div class="container">
 
-    <form class="row" (submit)="register($event)">
+    <form [formGroup]="formGroup" class="row" (submit)="register($event)">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Title</label>
-                <input name="title" [(ngModel)]="photo.title" class="form-control" autocomplete="off">
+                <input name="title" [(ngModel)]="photo.title"
+                       class="form-control" autocomplete="off"
+                       formControlName="title">
+                <div *ngIf="!formGroup.controls.title.valid">
+                    <span *ngIf="formGroup.controls.title.errors.required" class="form-control alert-danger">
+                        Title is required
+                    </span>
+                    <span *ngIf="formGroup.controls.title.errors.minlength" class="form-control alert-danger">
+                        Title has to be at least 4 characters long
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label>URL</label>
-                <input name="url" [(ngModel)]="photo.url" class="form-control" autocomplete="off">
+                <input name="url" [(ngModel)]="photo.url"
+                       class="form-control" autocomplete="off"
+                       formControlName="url">
+                <span *ngIf="formGroup.controls.url.invalid" class="form-control alert-danger">
+                    URL is required
+                </span>
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description" [(ngModel)]="photo.description" class="form-control" autocomplete="off">
+                <textarea name="description" [(ngModel)]="photo.description"
+                          formControlName="description"
+                          class="form-control" autocomplete="off">
                 </textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">
                 Save
             </button>
             <a [routerLink]="['']" class="btn btn-primary">Back</a>

@@ -8,10 +8,10 @@ import {PhotoModule} from "./photo/photo.module";
 import {PanelModule} from "./panel/panel.module";
 import "rxjs/add/operator/map";
 import {routing} from "./app.routes";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-    imports: [BrowserModule, PhotoModule, HttpModule, PanelModule, routing, FormsModule],
+    imports: [BrowserModule, PhotoModule, HttpModule, PanelModule, routing, FormsModule, ReactiveFormsModule],
     declarations: [AppComponent, RegisterComponent, ListComponent],
     bootstrap: [AppComponent],
 })
